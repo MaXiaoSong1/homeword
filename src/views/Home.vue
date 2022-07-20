@@ -1,9 +1,10 @@
 <template>
   <div class="home">
+    <el-button type="primary" @click="getCheckList">测试</el-button>
     <ma-Table
       init-request
-      :format="formatData"
       @onLoad="onLoad"
+      :check-list.sync="checkList"
       :column="column"
       index
       checkbox
@@ -35,9 +36,21 @@ export default {
   data() {
     return {
       column: [
-        { label: "姓名", prop: "name" },
-        { label: "性别", prop: "gender" },
-        { label: "创建时间", prop: "create_date" },
+        {
+          label: "姓名",
+          prop: "name",
+        },
+        {
+          label: "创建时间",
+          prop: "create_date",
+          sort: true,
+          sortBy: "a.xx",
+        },
+        {
+          label: "广告图片",
+          prop: "url",
+          type: "image",
+        },
         {
           label: "操作",
           type: "slot",
@@ -51,13 +64,25 @@ export default {
       params_1: {
         name: "rose",
       },
+      checkList: [],
     };
   },
   components: {
     yangButton: () => import("../components/button/index.vue"),
     maTable: () => import("../components/table/index.vue"),
   },
+  watch: {
+    checkList: {
+      handler(val) {
+        console.log(val, "1");
+      },
+      deep: true,
+    },
+  },
   methods: {
+    getCheckList() {
+      console.log(this.checkList);
+    },
     handleEdit(row) {
       console.log(row);
     },
