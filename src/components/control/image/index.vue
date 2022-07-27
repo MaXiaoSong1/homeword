@@ -6,22 +6,24 @@
 
 <script>
 export default {
-  name: "index",
+  name: 'index',
   props: {
     data: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     config: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     prop: {
       type: String,
-      default: "",
-    },
-  },
-};
+      default: ''
+    }
+  }
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
